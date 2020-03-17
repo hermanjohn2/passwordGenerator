@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Password Generator</h1>
+      </header>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <form>
+          <div class="card-body">
+            <!-- Form to collect data for password generation -->
+
+            <fieldset>
+              <!-- Password Length -->
+              <div class="collected-input">
+                <label for="length">Password Length</label>
+                <input type="number" id="length" min="8" max="16" value="20" />
+              </div>
+
+              <!-- Include numbers option -->
+              <div class="collected-input">
+                <label for="numbers">Include Numbers</label>
+                <input type="checkbox" id="numbers" checked />
+              </div>
+              <!-- Include Symbols Option -->
+              <div class="collected-input">
+                <label for="numbers">Include Symbols</label>
+                <input type="checkbox" id="symbols" checked />
+              </div>
+
+              <!-- Lowercase Option -->
+              <div class="collected-input">
+                <label for="lowercase">Include Lowercase Letters</label>
+                <input type="checkbox" id="lowercase" checked />
+              </div>
+
+              <!-- Uppercase Option -->
+              <div class="collected-input">
+                <label for="uppercase">Include Uppercase Letters</label>
+                <input type="checkbox" id="uppercase" checked />
+              </div>
+
+            <!-- Area where password will be generated -->
+            <textarea
+              readonly
+              id="password"
+              placeholder="Your Secure Password"
+              aria-label="Generated Password"
+            ></textarea>
+          </div>
+
+          <!-- Generate Button-->
+          <div class="card-footer">
+            <button id="generate" type="submit" class="btn">
+              Generate Password
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
