@@ -1,7 +1,3 @@
-// Assignment Code
-//
-var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() {
   // generatePassword function will be stored as password when called
@@ -12,16 +8,36 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
-// writePassword func is called when generateBtn is click
-generateBtn.addEventListener("click", writePassword);
+// Variables linked to elements of form
+var lengthElement = document.getElementById("length");
+var numbersElement = document.getElementById("numbers");
+var symbolsElement = document.getElementById("symbols");
+var lowercaseElement = document.getElementById("lowercase");
+var uppercaseElement = document.getElementById("uppercase");
+// New Password text area
+var passwordElement = document.getElementById("password");
+// Generate Button
+var generateBtn = document.getElementById("generate");
 
+// Object that holds all random generator functions
 var randomFunctions = {
   number: getRandomNumber,
   symbol: getRandomSymbol,
   uppercase: getRandomUppercase,
   lowercase: getRandomUppercase
 };
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", function() {
+  // Gets value of element and uses Unary plus(+) operator to change from string to number
+  var length = +lengthElement.value;
+  var hasNumbers = numbersElement.checked;
+  var hasSymbols = symbolsElement.checked;
+  var hasLowercase = lowercaseElement.checked;
+  var hasUppercase = uppercaseElement.checked;
+
+  console.log(hasLowercase, hasNumbers, hasSymbols, hasUppercase);
+});
 
 // Functions that Generate Random outputs --------------------------------------------------------------------------------------------------
 
