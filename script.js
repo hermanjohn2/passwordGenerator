@@ -1,14 +1,4 @@
-// Write password to the #password input
-function writePassword() {
-  // generatePassword function will be stored as password when called
-  var password = generatePassword();
-
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
-
-// Variables linked to elements of form
+// Variables linked to elements of id="form"
 var lengthElement = document.getElementById("length");
 var numbersElement = document.getElementById("numbers");
 var symbolsElement = document.getElementById("symbols");
@@ -27,7 +17,7 @@ var randomFunctions = {
   lowercase: getRandomUppercase
 };
 
-// Add event listener to generate button
+// Adds event listener to generate button
 generateBtn.addEventListener("click", function() {
   // Gets value of element and uses Unary plus(+) operator to change from string to number
   var length = +lengthElement.value;
@@ -37,11 +27,38 @@ generateBtn.addEventListener("click", function() {
   var hasUppercase = uppercaseElement.checked;
 
   console.log(length, hasLowercase, hasNumbers, hasSymbols, hasUppercase);
+
+  // Takes result of the entered values and adds to password element
+  password.innerText = writePassword(
+    length,
+    hasNumbers,
+    hasSymbols,
+    hasLowercase,
+    hasUppercase
+  );
 });
 
-// Prevents default action of submit/refresh on form
+// Function that writes password -- Takes in password element
+function writePassword(length, number, symbol, lower, upper) {
+  // 1. Remove unchecked types
+  // 2. Loop over length; call generator function for each type
+  // 3. Add final password to the password variable and return
 
-//look up how to prevent the default on form
+  // Initializes password variable
+  var createdPassowrd = "";
+
+  // Adds up amount of parameters selected and assigns to checkedCount variable
+  var checkedCount = number + symbol + lower + upper;
+
+  console.log(checkedCount);
+
+  // Array of objects that take parameter value as key
+  // Trying to figure out how to get checkedArray to log only what is checked
+  var checkedArray = [{ number }, { symbol }, { lower }, { upper }];
+  checkedArray.filter(item => Object.values(item)[0]);
+
+  console.log(checkedArray);
+}
 
 // Functions that Generate Random outputs --------------------------------------------------------------------------------------------------
 
