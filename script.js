@@ -36,8 +36,12 @@ generateBtn.addEventListener("click", function() {
   var hasLowercase = lowercaseElement.checked;
   var hasUppercase = uppercaseElement.checked;
 
-  console.log(hasLowercase, hasNumbers, hasSymbols, hasUppercase);
+  console.log(length, hasLowercase, hasNumbers, hasSymbols, hasUppercase);
 });
+
+// Prevents default action of submit/refresh on form
+
+//look up how to prevent the default on form
 
 // Functions that Generate Random outputs --------------------------------------------------------------------------------------------------
 
@@ -67,3 +71,5 @@ console.log(getRandomNumber());
 console.log(getRandomSymbol());
 console.log(getRandomLowercase());
 console.log(getRandomUppercase());
+
+//
