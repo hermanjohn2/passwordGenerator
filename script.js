@@ -13,8 +13,8 @@ var generateBtn = document.getElementById("generate");
 var randomFunctions = {
   number: getRandomNumber,
   symbol: getRandomSymbol,
-  uppercase: getRandomUppercase,
-  lowercase: getRandomUppercase
+  lower: getRandomLowercase,
+  upper: getRandomUppercase
 };
 
 // Adds event listener to generate button
@@ -29,7 +29,7 @@ generateBtn.addEventListener("click", function() {
   console.log(length, hasLowercase, hasNumbers, hasSymbols, hasUppercase);
 
   // Takes result of the entered values and adds to password element
-  password.innerText = writePassword(
+  passwordElement.innerText = writePassword(
     length,
     hasNumbers,
     hasSymbols,
@@ -40,12 +40,8 @@ generateBtn.addEventListener("click", function() {
 
 // Function that writes password -- Takes in password element
 function writePassword(length, number, symbol, lower, upper) {
-  // 1. Remove unchecked types
-  // 2. Loop over length; call generator function for each type
-  // 3. Add final password to the password variable and return
-
   // Initializes password variable
-  var createdPassowrd = "";
+  var createdPassword = "";
 
   // Adds up amount of parameters selected and assigns to checkedCount variable
   var checkedCount = number + symbol + lower + upper;
@@ -63,12 +59,26 @@ function writePassword(length, number, symbol, lower, upper) {
   if (checkedCount === 0) {
     return;
   }
+  // Calls random functions in order. Adds random item, if checked, until length is met.
+  for (let i = 0; i < length; i += checkedCount) {
+    checkedArray.forEach(type => {
+      // Gets the function name key from randomFunction object
+      var functionName = Object.keys(type)[0];
+
+      console.log(functionName);
+      debugger;
+      // Changes created password to
+      createdPassword = createdPassword + randomFunctions[functionName]();
+    });
+  }
+  console.log(createdPassword);
 }
 // Functions that Generate Random outputs --------------------------------------------------------------------------------------------------
 
-// Generates a random number between 0-9 -- String.fromCharCode takes a string from the browser character set values of letters, numbers and symbols on the keyboard.-- Math random generates random number between 0-1; multiply that by 10 so we get a number between 0-9; math floor rounds down to whole number; add 48 so it generates an output between 48 and 57. 48-57 represents the value of numbers 0-9 on the browser character set.
+// Generates a random number between 0-9. Math.floor(Math.random()) randomly selects from numbers variable
 function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  var numbers = "0123456789";
+  return numbers[Math.floor(Math.random() * numbers.length)];
 }
 
 // Generates a random symbol from the symbols variable by using Math.floor and Math.random
@@ -77,12 +87,14 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-// Generates a random lowercase letter by using same method as getRandomNumber. 26 represents the amount of possible letters. 97 represents where the alphabet starts on the browser character set.
+// Generates a random lowercase letter from the alphabet. Math.floor(Math.random()) randomly selects from lowercase variable
 function getRandomLowercase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+  var lowercase = "abcdefghijklmnopqrstuvwzyz";
+  return lowercase[Math.floor(Math.random() * lowercase.length)];
 }
 
-// Generate a random lowercase letter by using same method as getRandomLowercaser. 26 represents the amount of possible letters. 65 represents where the alphabet starts on the browser character set.
+// Generates a random uppercase letter from the alphabet. Math.floor(Math.random()) randomly selects from uppercase variable
 function getRandomUppercase() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return uppercase[Math.floor(Math.random() * uppercase.length)];
 }
