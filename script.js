@@ -1,4 +1,4 @@
-// Variables linked to elements of id="form"
+// Global Variables linked to elements
 var lengthElement = document.getElementById("length");
 var numbersElement = document.getElementById("numbers");
 var symbolsElement = document.getElementById("symbols");
@@ -53,13 +53,17 @@ function writePassword(length, number, symbol, lower, upper) {
   console.log(checkedCount);
 
   // Array of objects that take parameter value as key
-  // Trying to figure out how to get checkedArray to log only what is checked
-  var checkedArray = [{ number }, { symbol }, { lower }, { upper }];
-  checkedArray.filter(item => Object.values(item)[0]);
-
+  // Removes unchecked values using filter function. Loops through the array and removes values that are false.
+  var checkedArray = [{ number }, { symbol }, { lower }, { upper }].filter(
+    item => Object.values(item)[0]
+  );
   console.log(checkedArray);
-}
 
+  // If there are no boxes check, return out of function
+  if (checkedCount === 0) {
+    return;
+  }
+}
 // Functions that Generate Random outputs --------------------------------------------------------------------------------------------------
 
 // Generates a random number between 0-9 -- String.fromCharCode takes a string from the browser character set values of letters, numbers and symbols on the keyboard.-- Math random generates random number between 0-1; multiply that by 10 so we get a number between 0-9; math floor rounds down to whole number; add 48 so it generates an output between 48 and 57. 48-57 represents the value of numbers 0-9 on the browser character set.
@@ -82,11 +86,3 @@ function getRandomLowercase() {
 function getRandomUppercase() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
-
-// Console Testing
-console.log(getRandomNumber());
-console.log(getRandomSymbol());
-console.log(getRandomLowercase());
-console.log(getRandomUppercase());
-
-//
