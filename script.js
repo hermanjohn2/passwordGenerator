@@ -17,7 +17,7 @@ var randomFunctions = {
   upper: getRandomUppercase
 };
 
-// Adds event listener to generate button
+// Sets variables to their result once clicked.
 generateBtn.addEventListener("click", function() {
   // Gets value of element and uses Unary plus(+) operator to change from string to number
   var length = +lengthElement.value;
@@ -26,9 +26,9 @@ generateBtn.addEventListener("click", function() {
   var hasLowercase = lowercaseElement.checked;
   var hasUppercase = uppercaseElement.checked;
 
-  console.log(length, hasLowercase, hasNumbers, hasSymbols, hasUppercase);
+  // console.log(length, hasLowercase, hasNumbers, hasSymbols, hasUppercase);
 
-  // Takes result of the entered values and adds to password element
+  // Takes write password function result and adds to password element. When writePassword is called, it sets length and checked boxes results as variables.
   passwordElement.innerText = writePassword(
     length,
     hasNumbers,
@@ -38,42 +38,43 @@ generateBtn.addEventListener("click", function() {
   );
 });
 
-// Function that writes password -- Takes in password element
+// Beginning of function that writes the password. Sets first parameter to length & the remaining to match keys of randomFunctions object.
 function writePassword(length, number, symbol, lower, upper) {
-  // Initializes password variable
+  // Initializes createdPassword variable
   var createdPassword = "";
 
-  // Adds up amount of parameters selected and assigns to checkedCount variable
+  // Sets checkedCount to total of checked boxes
   var checkedCount = number + symbol + lower + upper;
 
-  console.log(checkedCount);
+  //console.log(checkedCount);
 
-  // Array of objects that take parameter value as key
-  // Removes unchecked values using filter function. Loops through the array and removes values that are false.
+  // Loops through checkedArray and removes values that result in false from the checked boxes.
   var checkedArray = [{ number }, { symbol }, { lower }, { upper }].filter(
     item => Object.values(item)[0]
   );
-  console.log(checkedArray);
+  //console.log(checkedArray);
 
-  // If there are no boxes check, return out of function
+  // If there are no boxes checked, returns empty string
   if (checkedCount === 0) {
-    return;
+    return "";
   }
   // Calls random functions in order. Adds random item, if checked, until length is met.
   for (let i = 0; i < length; i += checkedCount) {
     checkedArray.forEach(type => {
-      // Gets the function name key from randomFunction object
+      // Takes object key from checkedArray and sets to functionName
       var functionName = Object.keys(type)[0];
 
       console.log(functionName);
-      debugger;
-      // Changes created password to
-      createdPassword = createdPassword + randomFunctions[functionName]();
+
+      // Appends on the randomly generated item (symbol, number, lower, upper), to the createdPassword variable.
+      createdPassword += randomFunctions[functionName]();
     });
   }
+  // Returns created password outside of for loop, which is displayed in password element once writePassword() is called.
   console.log(createdPassword);
+  return createdPassword;
 }
-// Functions that Generate Random outputs --------------------------------------------------------------------------------------------------
+// Functions that Generate Random outputs
 
 // Generates a random number between 0-9. Math.floor(Math.random()) randomly selects from numbers variable
 function getRandomNumber() {
@@ -83,7 +84,7 @@ function getRandomNumber() {
 
 // Generates a random symbol from the symbols variable by using Math.floor and Math.random
 function getRandomSymbol() {
-  var symbols = "!@#$%&";
+  var symbols = "!@#$%&*<>+=";
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
