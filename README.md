@@ -1,14 +1,12 @@
 # Password Generator
 
-A web application that generates a secure password based on user input.
+An application that generates a secure password based on a user's criteria.
 
 ## Table of Contents
 
 1. Usage
 2. Contributing
 3. Questions
-
-[![GitHub version](https://badge.fury.io/gh/hermanjohn2%2FpasswordGenerator.svg)](https://github.com/hermanjohn2/passwordGenerator)
 
 ## Usage
 
