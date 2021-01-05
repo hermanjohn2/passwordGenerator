@@ -1,83 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <!-- Container to collect data for password generation -->
-        <div class="card-body">
-          <!-- Form to collect data for password generation -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Password Generator</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1>Password Generator</h1>
+			</header>
+			<div class="card">
+				<div class="card-header">
+					<h2>Generate a Password</h2>
+				</div>
 
-          <!-- Password Length -->
-          <div class="form">
-            <div class="collected-input">
-              <label for="length">Password Length</label>
-              <select type="number" id="length">
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-              </select>
-            </div>
+				<div class="card-body">
+					<!-- Form to collect data for password generation -->
+					<div class="form">
+						<div class="collected-input">
+							<!-- Password Length -->
+							<label for="length">Password Length</label>
+							<select type="number" id="length">
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+							</select>
+						</div>
 
-            <!-- Include numbers option -->
-            <div class="collected-input">
-              <label for="numbers">Include Numbers</label>
-              <input type="checkbox" id="numbers" checked />
-            </div>
-            <!-- Include Symbols Option -->
-            <div class="collected-input">
-              <label for="symbols">Include Symbols</label>
-              <input type="checkbox" id="symbols" checked />
-            </div>
+						<!-- Include numbers option -->
+						<div class="collected-input">
+							<label for="numbers">Include Numbers</label>
+							<input type="checkbox" id="numbers" checked />
+						</div>
+						<!-- Include Symbols Option -->
+						<div class="collected-input">
+							<label for="symbols">Include Symbols</label>
+							<input type="checkbox" id="symbols" checked />
+						</div>
 
-            <!-- Lowercase Option -->
-            <div class="collected-input">
-              <label for="lowercase">Include Lowercase Letters</label>
-              <input type="checkbox" id="lowercase" checked />
-            </div>
+						<!-- Lowercase Option -->
+						<div class="collected-input">
+							<label for="lowercase">Include Lowercase Letters</label>
+							<input type="checkbox" id="lowercase" checked />
+						</div>
 
-            <!-- Uppercase Option -->
-            <div class="collected-input">
-              <label for="uppercase">Include Uppercase Letters</label>
-              <input type="checkbox" id="uppercase" checked />
-            </div>
-          </div>
+						<!-- Uppercase Option -->
+						<div class="collected-input">
+							<label for="uppercase">Include Uppercase Letters</label>
+							<input type="checkbox" id="uppercase" checked />
+						</div>
+					</div>
 
-          <!-- Area where password will be generated -->
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
+					<!-- Area where password will be generated -->
+					<textarea
+						readonly
+						id="password"
+						placeholder="Your Secure Password"
+						aria-label="Generated Password"
+					></textarea>
+				</div>
 
-        <!-- Generate Button-->
-        <div class="card-footer">
-          <button id="generate" type="submit" class="btn">
-            Generate Password
-          </button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+				<!-- Generate Button-->
+				<div class="card-footer">
+					<button id="generate" type="submit" class="btn">Generate Password</button>
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
 </html>
